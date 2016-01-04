@@ -8,8 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="docs-layout mdl-layout mdl-js-layout">
+		<%= yield %>
+		<%= render 'layouts/footer' %> 
+	</div>	
 </body>
 </html>
