@@ -38,3 +38,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Custom GEM
+	#Material Design
+gem 'material_design_rails', '~> 0.0.1'
