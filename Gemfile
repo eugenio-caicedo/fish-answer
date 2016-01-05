@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 # Custom GEM
 	#Material Design
 gem 'material_design_rails', '~> 0.0.1'
+	#Postgres
+gem 'pg'
