@@ -3,27 +3,38 @@
     	<div class="docs-text-styling component-title">
         	<h4>Inicio de Session</h4>
         </div>
-
+        
+        <!-- NOTIFICATION -->
+        <% if notice.presence %>
+			<div class="alert alert-danger"><%= notice %></div>
+		<% end %>
+		
 		<form action="/login/start" method="post">
 			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+			
+			<!-- USERNAME -->
   			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     			<input class="mdl-textfield__input" type="text" id="user[username]" name="user[username]">
     			<label class="mdl-textfield__label" for="user[username]">Usuario:</label>
   			</div>
   			<br/>
+  			
+  			<!-- PASSWORD -->
   			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">    			
     			<input class="mdl-textfield__input" type="password" id="user[password]" name="user[password]">
     			<label class="mdl-textfield__label" for="user[password]">Clave:</label>
   			</div>
   			<br/>
+  			
+  			<!-- BUTTONS -->
   			<div>
-  			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-  				type="submit">
-  				Login
-			</button>
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-  				Cancelar
-			</button>
+  				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+  					type="submit">
+  					Login
+				</button>
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  					Cancelar
+				</button>
 			</div>
 		</form>
 

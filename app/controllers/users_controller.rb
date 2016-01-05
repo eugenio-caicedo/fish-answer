@@ -41,11 +41,14 @@ class UsersController < ApplicationController
   # POST /login/start.json
   def login
   	@user = User.new(user_params)
-  	if @user.verification
-  		#SE CREARA LA SESSION
-  		render json: {usuario: @user}
-  	else
-  		render text: "No Existe el Usuario"
+  	respond_to do |format|
+  		if @user.verification
+  			#SE CREARA LA SESSION
+  			render json: {usuario: @user}
+  		else
+      		format.html { redirect_to "/login", notice: 'El usuario no se encuentra.' }
+      		format.json { render json: {error: "El usuario no se encuentra.", estatus: 400}, :status => :bad_request }
+		end
   	end
   end
 
