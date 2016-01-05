@@ -36,6 +36,18 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  # POST /login/start
+  # POST /login/start.json
+  def login
+  	@user = User.new(user_params)
+  	if @user.verification
+  		#SE CREARA LA SESSION
+  		render json: {usuario: @user}
+  	else
+  		render text: "No Existe el Usuario"
+  	end
+  end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

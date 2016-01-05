@@ -56,5 +56,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  #resources :users
+  
   get ':controller(/:action(/:id))(.:format)'
+  
+  match '/login' => "main#login", via: [:get, :post]
+  match '/login/start' => "users#login", via: [:post]
 end
