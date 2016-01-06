@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   	respond_to do |format|
   		if @user.verification
   			#SE CREARA LA SESSION
-  			render json: {usuario: @user}
+  			format.html { redirect_to "/main/dashboard" }
+  			format.json { render json: {url: "/main/dashboard"} }
   		else
       		format.html { redirect_to "/login", notice: 'El usuario no se encuentra.' }
       		format.json { render json: {error: "El usuario no se encuentra.", estatus: 400}, :status => :bad_request }
