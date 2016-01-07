@@ -1,40 +1,45 @@
 <section class="mdl-components__page mdl-grid">
-	<div class="mdl-cell mdl-cell--12-col form">
-    	<div class="docs-text-styling component-title">
-        	<h4>Inicio de Session</h4>
-        </div>
-        
-        <!-- NOTIFICATION -->
-        <% if notice.presence %>
-			<div class="alert alert-danger"><%= notice %></div>
-		<% end %>
+	<div class="demo-card-wide mdl-card mdl-shadow--2dp center login">
+		<%= render "layouts/form/title", title: "Inicio de Session" %>
 		
-		<form action="/login/start" method="post">
-			<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-			
-			<!-- USERNAME -->
-  			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    			<input class="mdl-textfield__input" type="text" id="user[username]" name="user[username]">
-    			<label class="mdl-textfield__label" for="user[username]">Usuario:</label>
-  			</div>
-  			<br/>
+		<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+        
+        	<!-- NOTIFICATION -->
+        	<% if notice.presence %>
+				<div class="alert alert-danger"><%= notice %></div>
+			<% end %>
+		
+			<form action="/login/start" method="post">
+				<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+				
+				<div class="space-center">
+				
+					<!-- USERNAME -->
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+   						<input class="mdl-textfield__input" type="text" id="user[username]" name="user[username]">
+   						<label class="mdl-textfield__label" for="user[username]">Usuario:</label>
+					</div>
+					<br/>
   			
-  			<!-- PASSWORD -->
-  			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">    			
-    			<input class="mdl-textfield__input" type="password" id="user[password]" name="user[password]">
-    			<label class="mdl-textfield__label" for="user[password]">Clave:</label>
-  			</div>
-  			<br/>
+					<!-- PASSWORD -->
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">    			
+  						<input class="mdl-textfield__input" type="password" id="user[password]" name="user[password]">
+  						<label class="mdl-textfield__label" for="user[password]">Clave:</label>
+					</div>
+					<br/>
+					
+  				</div>
   			
-  			<!-- BUTTONS -->
-  			<div>
-				<%= render "layouts/buttons", actions: {submit:"Login"} %>
-			</div>
+  				<!-- BUTTONS -->
+  				<div>
+					<%= render "layouts/buttons", actions: {submit:"Login"} %>
+				</div>
 			
-			<div>
-				<%= link_to "¿No posee Cuenta?", new_client_path, class: "link" %>
-			</div>
-		</form>
+				<div>
+					<%= link_to "¿No posee Cuenta?", new_client_path, class: "link" %>
+				</div>
+			</form>
 
+		</div>
 	</div>
 </section>

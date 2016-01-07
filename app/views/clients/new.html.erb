@@ -1,9 +1,7 @@
 <%= render 'layouts/header' %>
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp center">
-	<div class="mdl-card__title">
-		<h2 class="mdl-card__title-text">Nuevo Cliente</h2>
-  	</div>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp center client">
+	<%= render "layouts/form/title", title: "Nuevo Cliente" %>
   	
   	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
 		<%= render 'form', url: "/login" %>
