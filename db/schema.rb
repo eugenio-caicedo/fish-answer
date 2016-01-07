@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20160106195647) do
   enable_extension "plpgsql"
 
   create_table "clients", force: true do |t|
-    t.string   "firstName"
-    t.string   "lastFirstName"
+    t.string   "first_name"
+    t.string   "last_first_name"
     t.string  "sex"
     t.integer  "age"
     t.datetime "created_at"

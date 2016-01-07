@@ -30,7 +30,7 @@ class ClientsController < ApplicationController
 	
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to checkURL, notice: 'Client was successfully created.' }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new }
@@ -71,7 +71,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:firstName, :lastFirstName, :sex, :age, users_attributes: [:username, :password])
+      params.require(:client).permit(:first_name, :last_first_name, :sex, :age, users_attributes: [:username, :password, :password_confirmation])
     end
     
     def newUser(create)
@@ -79,5 +79,9 @@ class ClientsController < ApplicationController
     	if @client.users.empty? and create
     		@client.users.build
     	end
+    end
+    
+    def checkURL
+    	(defined? params[:client][:url]) ? params[:client][:url] : @client
     end
 end

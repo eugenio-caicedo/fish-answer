@@ -1,0 +1,10 @@
+<% if defined? f %>
+	<%= f.submit class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+<% else %>
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+  		<%= (defined? actions) ? actions[:submit] : "Enviar" %>
+	</button>
+<% end %>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset">
+	Cancelar
+</button>

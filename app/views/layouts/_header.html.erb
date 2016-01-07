@@ -3,8 +3,11 @@
     	<!-- <span class="docs-layout-title mdl-layout-title"><a href="../">Material<br>Design<br>Lite</a></span> -->
   		<p>FISH ANSWER (LOGO)</p>
   		<div class="spacer"></div>
-  	<div>
-  		PARA EL USUARIO
-  	</div>
+  		<% if session[:user_id] != nil %>
+  			<div id="profile">
+  				ID USUARIO: <%= session[:user_id] %>
+  				<%= link_to "Logout", "/logout" %>
+  			</div>
+  		<% end %>
   	</div>
 </header>

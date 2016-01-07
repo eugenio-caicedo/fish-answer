@@ -65,4 +65,5 @@ Rails.application.routes.draw do
   
   match '/login' => "main#login", via: [:get, :post]
   match '/login/start' => "users#login", via: [:post]
+  match '/logout' => "users#logout", via: [:get, :post]
 end

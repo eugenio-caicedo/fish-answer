@@ -20,6 +20,12 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+  
+  # GET /users/logout
+  def logout
+  	reset_session
+  	redirect_to "/"
+  end
 
   # POST /users
   # POST /users.json
@@ -41,9 +47,10 @@ class UsersController < ApplicationController
   # POST /login/start.json
   def login
   	@user = User.new(user_params)
+  	
   	respond_to do |format|
   		if @user.verification
-  			#SE CREARA LA SESSION
+  			session[:user_id] = @user.firstUser.id
   			format.html { redirect_to "/main/dashboard" }
   			format.json { render json: {url: "/main/dashboard"} }
   		else
