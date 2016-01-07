@@ -3,7 +3,7 @@ class CreateClients < ActiveRecord::Migration
     create_table :clients do |t|
       t.string :firstName
       t.string :lastFirstName
-      t.boolean :sex
+      t.string :sex
       t.integer :age
 
       t.timestamps

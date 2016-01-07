@@ -11,23 +11,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :firstName %><br>
-    <%= f.text_field :firstName %>
+  <!-- FIRST NAME -->
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :firstName, class: "mdl-textfield__label" %>
+    <%= f.text_field :firstName, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :lastFirstName %><br>
-    <%= f.text_field :lastFirstName %>
+  
+  <!-- LAST FIRST NAME -->
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :lastFirstName, class: "mdl-textfield__label" %>
+    <%= f.text_field :lastFirstName, class: "mdl-textfield__input" %>
   </div>
+  
+  <!-- SEX -->
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.check_box :sex %>
+    <% Client.sexValue.each do |sex| %>
+    	<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="client_sex_<%= sex.downcase %>">
+    		<%= f.radio_button :sex, sex, class: "mdl-radio__button" %>
+    		<span class="mdl-radio__label"><%= sex %></span>
+    	</label>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+  
+  <!-- AGE -->
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :age, class: "mdl-textfield__label" %>
+    <%= f.text_field :age, class: "mdl-textfield__input", pattern: "-?[0-9]*(\.[0-9]+)?" %>
+    <span class="mdl-textfield__error">No es un número!</span>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br/>
+  
+  <!-- USER'S ACCES -->
+  <%= f.label "DATOS DE ACCESO" %><br/>
+  <%= f.fields_for :users do |user| %> 
+  	<%= render "users/user_fields", :f => user %>
+  <% end %>
+  
+  <!-- BUTTONS -->
+  <div class="mdl-card__actions mdl-card--border">
+  	<div class="actions">
+    	<%= f.submit class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+  	</div>
   </div>
 <% end %>
+
+
+
+

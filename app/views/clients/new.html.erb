@@ -1,5 +1,15 @@
-<h1>New client</h1>
+<%= render 'layouts/header' %>
 
-<%= render 'form' %>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp center">
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">Nuevo Cliente</h2>
+  	</div>
+  	
+  	<div class="mdl-card__supporting-text">
+		<%= render 'form' %>
+	</div>
+	
+	<!-- <%= link_to 'Back', clients_path, class: "link" %> -->
+</div>
 
-<%= link_to 'Back', clients_path %>
+<%= render 'layouts/footer' %>
