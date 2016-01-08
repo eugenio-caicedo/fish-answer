@@ -1,6 +1,15 @@
-<h1>Editing client</h1>
+<%= render 'layouts/header' %>
 
-<%= render 'form' %>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp center client">
+	<%= render "layouts/form/title", title: "Editar Perfil" %>
+	
+	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+		<%= render 'form' %>
+	</div>
+	
+</div>
 
+<!--
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>
+-->

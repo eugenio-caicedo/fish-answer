@@ -5,8 +5,8 @@
   		<div class="spacer"></div>
   		<% if session[:user_id] != nil %>
   			<div id="profile">
-  				ID USUARIO: <%= session[:user_id] %>
-  				<%= link_to "Logout", "/logout" %>
+  				<%= link_to "Usuario: "+@user.fullName, @user.client, class: "link_to profile" %>
+  				<%= link_to "Logout", "/logout", class: "link_to header" %>
   			</div>
   		<% end %>
   	</div>

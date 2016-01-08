@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160106195647) do
 
   create_table "clients", force: true do |t|
     t.string   "first_name"
-    t.string   "last_first_name"
+    t.string   "first_last_name"
     t.string  "sex"
     t.integer  "age"
     t.datetime "created_at"

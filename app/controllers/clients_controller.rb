@@ -71,11 +71,11 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :last_first_name, :sex, :age, users_attributes: [:username, :password, :password_confirmation])
+      params.require(:client).permit(:id, :first_name, :first_last_name, :sex, :age, users_attributes: [:id, :username, :password, :password_confirmation])
     end
     
     def newUser(create)
-    	@client.users = User.active(@client)
+    	@client.users = User.actives(@client)
     	if @client.users.empty? and create
     		@client.users.build
     	end

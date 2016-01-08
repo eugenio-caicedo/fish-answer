@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/header' %>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @client.first_name %>
-</p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Lastfirstname:</strong>
-  <%= @client.last_first_name %>
-</p>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp center profile">
+	<%= render "layouts/form/title", title: "Perfil" %>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @client.sex %>
-</p>
+	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+		<%= render "layouts/form/subtitle", subtitle: "Informacion Basica" %>
+		<div class="mdl-grid">
+  			<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+  				<%= render "layouts/form/showField", field: {name: "Nombre", value:@client.fullName} %>
+				<%= render "layouts/form/showField", field: {name: "Sexo", value:@client.sex} %>
+				<%= render "layouts/form/showField", field: {name: "Edad", value:@client.age} %>
+			</div>
+		</div>
+		
+		<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
+		<div class="mdl-grid">
+  			<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+				<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
+			</div>
+		</div>
+				
+		<div class="mdl-card__actions mdl-card--border">
+  			<div class="actions">
+  				<%= link_to 'Editar', edit_client_path(@client) %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Age:</strong>
-  <%= @client.age %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>

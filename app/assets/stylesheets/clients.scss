@@ -7,13 +7,20 @@
 	margin-right: auto;
 }
 
+.demo-card-wide.mdl-card {
+	height: auto;
+  
+  	.mdl-card__title, .mdl-card__supporting-text {
+  		width: 100%;
+  	}
+}
+
 .demo-card-wide.mdl-card.client {
   width: 55%; //512px
-  height: auto;
-  
-  .mdl-card__title, .mdl-card__supporting-text {
-  	width: 100%;
-  }
+}
+
+.demo-card-wide.mdl-card.profile {
+  width: 30%; //512px
 }
 
 .mdl-radio.is-upgraded {
