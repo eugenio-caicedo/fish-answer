@@ -46,3 +46,5 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 	#Postgres
 gem 'pg'
+	#Paginacion
+gem 'will_paginate'

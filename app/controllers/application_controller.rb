@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   before_filter :currentUserInfo
   
+  PAGE_SIZE = 10
+  
   def currentUserInfo
   	@user = nil
   	if (session[:user_id] != nil)

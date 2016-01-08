@@ -1,3 +1,20 @@
 <%= render 'layouts/header' %>
 
+<div class="mdl-grid">
+  	<div class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet">
+  		<div id="list-question-recent">
+  		</div>
+  	</div>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+		<div id="list-question-recent-client"></div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$("#list-question-recent").load("/questions");
+		$("#list-question-recent-client").load("/clients/<%= @user.client.id %>/questions");
+	});
+</script>
+
 <%= render 'layouts/footer' %> 

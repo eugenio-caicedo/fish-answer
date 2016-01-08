@@ -1,0 +1,47 @@
+<% if actions %>
+	<%= link_to 'Nueva Pregunta', new_question_path %>
+<% end %>
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Pregunta</th>
+      <th >Respuestas</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% questions.each do |question| %>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">
+        	<%= link_to question.title, question %><br/>
+        	realizada por <%= question.client.fullName %> en <%= question.createdAtFormated %>
+        </td>
+        <td><%= 5 %></td>
+        <!-- <td><%= link_to 'Show', question %></td> 
+        <td><%= link_to 'Edit', edit_question_path(question) %></td> -->
+        <% if actions %>
+        	<td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+  
+  <tfoot>
+    <tr>
+      <td colspan="2" class="mdl-data-table__cell--non-numeric">
+      	<%= will_paginate @questions %>
+      	<%= page_entries_info @posts %>
+      </td>
+    </tr>
+  </tfoot>
+  
+</table>
+<script>
+	$(document).ready(function() {
+		$('.pagination a, a.previous_page, a.next_page').on('click', function (e) {
+			e.preventDefault();
+			$("#<%= div %>").load(e.currentTarget.href);
+	 	});
+	 });
+</script>
