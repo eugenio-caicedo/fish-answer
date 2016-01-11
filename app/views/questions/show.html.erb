@@ -1,14 +1,51 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/header' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Description:</strong>
-  <%= @question.description %>
-</p>
+<div class="mdl-grid">
+  	<div class="mdl-cell mdl-cell--5-col mdl-cell--10-col-tablet">
+  	
+		<div class="demo-card-wide mdl-card mdl-shadow--2dp center question">
+			<%= render "layouts/form/title", title: @question.title %>
+	
+			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<%= @question.description %>
+				<div>
+					
+				</div>
+			</div>
+	
+			<% if @question.client.id == @user.client.id %>
+				<div class="mdl-card__actions mdl-card--border">
+  					<div class="actions">
+  						<%= link_to 'Editar', edit_question_path(@question) %>
+  						<%= link_to 'Responder', 'javascript:respond()' %>
+  					</div>
+  				</div>
+  			<% end %>
+		</div>
+		
+		<div id="respond"></div>
+				
+	</div>
+	
+	<div class="mdl-cell mdl-cell--7-col mdl-cell--10-col-tablet">
+		<div id="answers"></div>
+	</div>
+	
+</div>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<script>
+	function respond(){
+		$("#respond").load("/answers/new");
+		console.log("RESPONDER");
+	}
+	
+	$(document).ready(function() {
+		$("#answers").load("/questions/<%= @question.id %>/answers");
+	});
+</script>
+
+<!--
+ |
+<%= link_to 'Back', questions_path %>-->

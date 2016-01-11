@@ -1,7 +1,8 @@
 class Client < ActiveRecord::Base
 	has_many :users, :dependent => :destroy
 	has_many :questions, :dependent => :destroy
-	accepts_nested_attributes_for :users, :questions
+	has_many :answers, :dependent => :destroy
+	accepts_nested_attributes_for :users, :questions, :answers
 	
 	validates_presence_of :first_name, :first_last_name, :sex, :age
 	validates_numericality_of :age

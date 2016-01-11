@@ -9,6 +9,7 @@
 
 .demo-card-wide.mdl-card {
 	height: auto;
+	min-height: inherit;
   
   	.mdl-card__title, .mdl-card__supporting-text {
   		width: 100%;
