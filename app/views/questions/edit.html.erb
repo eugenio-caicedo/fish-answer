@@ -1,6 +1,13 @@
-<h1>Editing question</h1>
+<%= render 'layouts/header' %>
 
-<%= render 'form' %>
+<div class="container">
+	<div class="demo-card-wide mdl-card mdl-shadow--2dp center question">
+		<%= render "layouts/form/title", title: "Editar Pregunta" %>
+		<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+			<%= render 'form' %>
+		</div>
+	</div>
+	<%= link_to 'Back', "/dashboard" %>
+</div>
 
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+<%= render 'layouts/footer' %> 

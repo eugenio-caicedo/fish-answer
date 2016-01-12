@@ -41,6 +41,7 @@ gem 'spring',        group: :development
 
 # Custom GEM
 	#Material Design
+	gem 'materialize-sass'
 #gem 'material_design_rails', '~> 0.0.1'
 	#Boostrap
 gem 'bootstrap-sass'

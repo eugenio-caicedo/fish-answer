@@ -57,8 +57,6 @@ Rails.application.routes.draw do
   
   resources :users
   
-  resources :answers
-  
   resources :questions do
   	resources :answers
   end
@@ -67,7 +65,7 @@ Rails.application.routes.draw do
   	resources :questions
   end
     
-  get ':controller(/:action(/:id))(.:format)'
+  #get ':controller(/:action(/:id))(.:format)'
   
   match '/login' => "main#login", via: [:get, :post]
   match '/login/start' => "users#login", via: [:post]

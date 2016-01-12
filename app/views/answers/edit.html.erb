@@ -1,6 +1,14 @@
-<h1>Editing answer</h1>
+<%= render 'layouts/header' %>
 
-<%= render 'form' %>
+<div class ="container">
+	<div class="demo-card-wide mdl-card mdl-shadow--2dp center answer">
+		<%= render "layouts/form/title", title: "Editar Respuesta" %>
+		<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+			<%= render 'form' %>
+		</div>
+	</div>
 
-<%= link_to 'Show', @answer %> |
-<%= link_to 'Back', answers_path %>
+	<%= link_to 'Back', question_path(@question) %>
+</div>
+
+<%= render 'layouts/footer' %> 

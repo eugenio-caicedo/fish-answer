@@ -1,0 +1,16 @@
+<tfoot>
+  <tr>
+    <td colspan="<%= colspan %>" class="mdl-data-table__cell--non-numeric">
+    	<%= will_paginate paginable %>
+    	<%= page_entries_info paginable %>
+    </td>
+  </tr>
+</tfoot>
+<script>
+	$(document).ready(function() {
+		$('.pagination a, a.previous_page, a.next_page').on('click', function (e) {
+			e.preventDefault();
+			$("#<%= div %>").load(e.currentTarget.href);
+	 	});
+	 });
+</script>

@@ -27,21 +27,6 @@
     <% end %>
   </tbody>
   
-  <tfoot>
-    <tr>
-      <td colspan="2" class="mdl-data-table__cell--non-numeric">
-      	<%= will_paginate @questions %>
-      	<%= page_entries_info @posts %>
-      </td>
-    </tr>
-  </tfoot>
-  
+  <%= render "/layouts/form/paginable", colspan: 2, paginable: @questions, div: div %>
+    
 </table>
-<script>
-	$(document).ready(function() {
-		$('.pagination a, a.previous_page, a.next_page').on('click', function (e) {
-			e.preventDefault();
-			$("#<%= div %>").load(e.currentTarget.href);
-	 	});
-	 });
-</script>

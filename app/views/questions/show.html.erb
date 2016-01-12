@@ -20,6 +20,7 @@
   					<div class="actions">
   						<%= link_to 'Editar', edit_question_path(@question) %>
   						<%= link_to 'Responder', 'javascript:respond()' %>
+  						<%= link_to 'Back', "/dashboard" %>
   					</div>
   				</div>
   			<% end %>
@@ -36,16 +37,11 @@
 </div>
 
 <script>
-	function respond(){
-		$("#respond").load("/answers/new");
-		console.log("RESPONDER");
+	function respond(){		
+		$("#respond").load("<%= new_question_answer_path (@question) %>");
 	}
 	
 	$(document).ready(function() {
-		$("#answers").load("/questions/<%= @question.id %>/answers");
+		$("#answers").load("<%= question_answers_path (@question) %>");
 	});
 </script>
-
-<!--
- |
-<%= link_to 'Back', questions_path %>-->

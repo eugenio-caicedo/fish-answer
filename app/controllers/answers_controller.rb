@@ -1,16 +1,13 @@
 class AnswersController < ApplicationController
+  before_action :load_question
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
-  # GET /answers
-  # GET /answers.json
+  # GET /questions/1/answers
+  # GET /questions/1/answers.json
   def index
     #@answers = Answer.all
     page = (params["page"] != nil) ? params["page"] : 1
-    if params["question_id"] != nil
-    	@answers = Answer.by_question(Question.find_by_id(params["question_id"])).paginable(page, PAGE_SIZE)
-    else
-    	@answers = Answer.all.paginable(page, PAGE_SIZE)
-    end
+    @answers = Answer.by_question(@question).paginable(page, PAGE_SIZE)
   end
 
   # GET /answers/1
@@ -32,11 +29,13 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     @answer.client = @user.client
-
+    @answer.question = @question
+	
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
+      	path = question_answer_path(@question, @answer)
+        format.html { redirect_to path, notice: 'Answer was successfully created.' }
+        format.json { render :show, status: :created, location: path }
       else
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
@@ -69,6 +68,10 @@ class AnswersController < ApplicationController
   end
 
   private
+    def load_question
+    	@question = Question.find_by_id(params["question_id"])
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
       @answer = Answer.find(params[:id])
