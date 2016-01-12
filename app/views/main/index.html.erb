@@ -21,7 +21,7 @@
 
 <script>
 	$(document).ready(function() {
-		$("#list-question").load("/users"); //Se cambiara luego por la lista de preguntas
+		$("#list-question").load("<%= questions_path %>"); //Se cambiara luego por la lista de preguntas
 		$("#form-login").load("/login");
 	});
 </script>

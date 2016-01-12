@@ -17,7 +17,7 @@
         	<%= link_to question.title, question %><br/>
         	realizada por <%= question.client.fullName %> en <%= question.createdAtFormated %>
         </td>
-        <td><%= 5 %></td>
+        <td><%= question.answers.count %></td>
         <!-- <td><%= link_to 'Show', question %></td> 
         <td><%= link_to 'Edit', edit_question_path(question) %></td> -->
         <% if actions %>
