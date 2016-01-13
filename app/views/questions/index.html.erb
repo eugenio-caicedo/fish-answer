@@ -1,5 +1,5 @@
 <div id="<%= @params[:div] %>">
-	<h3><%= @params[:title] %></h3>
+	<h3 class="header"><%= @params[:title] %></h3>
 	<%= render "question_fields_list", div: @params[:div], questions: @questions, actions: @params[:actions] %>
 </div>
 <!-- <br>

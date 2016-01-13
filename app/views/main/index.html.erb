@@ -1,28 +1,33 @@
 <%= render 'layouts/header' %> 
 
-<main class="docs-layout-content mdl-layout__content mdl-color-text--grey-600">
-	<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-		<nav class="mdl-navigation mdl-tabs__tab-bar">
-			<a href="#all-question" class="mdl-tabs__tab is-active">Ultimas Preguntas</a>
-      		<a href="#login" class="mdl-tabs__tab">Iniciar Session</a>
-  		</nav>
-  	
-  		<div class="mdl-tabs__panel is-active" id="all-question">
-  			<div id="list-question">
+<main>
+	<div class="container">
+		<div class="row">
+    		<div class="col s12">
+      			<ul class="tabs">
+        			<li class="tab col s6"><a class="active" href="#all-question">Preguntas Recientes</a></li>
+        			<li class="tab col s6"><a href="#login">Iniciar Session</a></li>
+        		</ul>
+    		</div>
+    		
+    		<div id="all-question" class="col s12">
+  				<div id="list-question">
+  				</div>
   			</div>
-  		</div>
   	
-  		<div class="mdl-tabs__panel" id="login">
-  			<div id="form-login">
+  			<div id="login" class="col s12">
+  				<div id="form-login">
+  				</div>
   			</div>
-  		</div>
+        </div>
 	</div>
 </main>
 
 <script>
 	$(document).ready(function() {
-		$("#list-question").load("<%= questions_path %>"); //Se cambiara luego por la lista de preguntas
-		$("#form-login").load("/login");
+		$('ul.tabs').tabs();
+		$("#list-question").load("<%= questions_path %>?ajax=true");
+		$("#form-login").load("/login?ajax=true");
 	});
 </script>
 

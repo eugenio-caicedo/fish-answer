@@ -1,22 +1,22 @@
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Respuestas</th>
-      <th></th>
-    </tr>
-  </thead>
+<ul class="collection collapsible">
+	<% answers.each do |answer| %>
+		<li>
+      		<div class="collapsible-header">
+      			<i class="material-icons">add_circle_outline</i>
+      			<%= answer.title %>
+      		</div>
+      		<div class="collapsible-body">
+      			<p class="truncate"><%= answer.description %></p>
+      		</div>
+    	</li>
+	<% end %>
+	<%= render "/layouts/form/paginable", colspan: 3, paginable: answers, div: div %>
+</ul>
 
-  <tbody>
-    <% answers.each do |answer| %>
-      <tr>
-        <td><%= link_to answer.title, question_answer_path(@question, answer) %></td>
-        <!--<td><%= answer.description %></td>-->
-        <% if(answer.client.id = @user.client.id) %>
-        	<td><%= link_to 'Editar', edit_question_answer_path(@question, answer) %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-  
-  <%= render "/layouts/form/paginable", colspan: 3, paginable: answers, div: div %>
-</table>
+<script>
+	$(document).ready(function(){
+    	$('.collapsible').collapsible({
+      		accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    	});
+  	});
+</script>

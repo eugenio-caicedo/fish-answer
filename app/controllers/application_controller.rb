@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   PAGE_SIZE = 10
   
   def currentUserInfo
+  	@ajax = params[:ajax]
   	@user = nil
   	if (session[:user_id] != nil)
   		@user = User.find_by_id(session[:user_id])

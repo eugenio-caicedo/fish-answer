@@ -1,13 +1,23 @@
-<header class="docs-layout-header mdl-layout__header">
-	<div class="mdl-layout__header-row">
-    	<!-- <span class="docs-layout-title mdl-layout-title"><a href="../">Material<br>Design<br>Lite</a></span> -->
-  		<a href="/dashboard" class="link_to"><p>FISH ANSWER (LOGO)</p></a>
-  		<div class="spacer"></div>
-  		<% if session[:user_id] != nil %>
-  			<div id="profile">
-  				<%= link_to "Usuario: "+@user.fullName, @user.client, class: "link_to profile" %>
-  				<%= link_to "Logout", "/logout", class: "link_to header" %>
-  			</div>
-  		<% end %>
-  	</div>
+<header>
+	<nav class="top-nav">
+		<div class="container">
+          <div class="nav-wrapper">
+          	<a href="<%= (session[:user_id] != nil) ? "/dashboard" : "/" %>" class="brand-logo">
+          		FISH ANSWER
+          	</a>
+          	<% if session[:user_id] != nil %>
+          		<a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+          		<div id="profile">
+          			<%= render "/layouts/options_profile", user: @user, ul: {id: "web-menu", class: "right hide-on-med-and-down"} %>
+          		</div>
+          		<%= render "/layouts/options_profile", user: @user, ul: {id: "mobile-menu", class: "side-nav"} %>
+          	<% end %>
+          </div>
+        </div>
+    </nav>
 </header>
+<script>
+	$(document).ready(function() {
+		$(".button-collapse").sideNav();
+	});
+</script>

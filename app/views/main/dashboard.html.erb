@@ -1,19 +1,20 @@
 <%= render 'layouts/header' %>
 
-<div class="mdl-grid">
-  	<div class="mdl-cell mdl-cell--6-col mdl-cell--10-col-tablet">
+<div class="row">
+  	<div class="col s6">
   		<div id="list-question-recent">
   		</div>
   	</div>
-	<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+	<div class="col s6">
 		<div id="list-question-recent-client"></div>
 	</div>
 </div>
 
 <script>
 	$(document).ready(function() {
-		$("#list-question-recent").load("/questions");
-		$("#list-question-recent-client").load("/clients/<%= @user.client.id %>/questions");
+		$("#list-question-recent").load("/questions?ajax=true");
+		//$("#list-question-recent-client").load("/clients/<%= @user.client.id %>/questions");
+		$("#list-question-recent-client").load("<%= client_questions_path (@user.client) %>?ajax=true");
 	});
 </script>
 

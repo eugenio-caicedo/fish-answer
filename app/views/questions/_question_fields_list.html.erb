@@ -2,31 +2,24 @@
 	<%= link_to 'Nueva Pregunta', new_question_path %>
 <% end %>
 
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Pregunta</th>
-      <th >Respuestas</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% questions.each do |question| %>
-      <tr>
-        <td class="mdl-data-table__cell--non-numeric">
-        	<%= link_to question.title, question %><br/>
-        	realizada por <%= question.client.fullName %> en <%= question.createdAtFormated %>
-        </td>
-        <td><%= question.answers.count %></td>
-        <!-- <td><%= link_to 'Show', question %></td> 
-        <td><%= link_to 'Edit', edit_question_path(question) %></td> -->
-        <% if actions %>
-        	<td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-  
-  <%= render "/layouts/form/paginable", colspan: 2, paginable: @questions, div: div %>
-    
-</table>
+<ul class="collection">
+	<% questions.each do |question| %>
+		<li class="collection-item avatar">
+    		<span class="title"><%= question.title %></span>
+      			<p>realizada por <%= question.client.fullName %> en <%= question.createdAtFormated %><br>
+         			Respuestas: <%= question.answers.count %>
+      			</p>
+    		</span>
+    		<div class="secondary-content">
+    			<!-- <a href="#!"><i class="material-icons">grade</i></a><br/> -->
+    			<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Pregunta"
+    				href="<%= question_path question %>">
+    				<i class="material-icons">send</i>
+    			</a>
+    		</div>
+    	</li> 
+    	<!-- <td><%= link_to 'Show', question %></td> 
+        <td><%= link_to 'Edit', edit_question_path(question) %></td> -->  
+	<% end %>
+	<%= render "/layouts/form/paginable", colspan: 2, paginable: @questions, div: div %>
+</ul>

@@ -2,35 +2,36 @@
 
 <!-- <p id="notice"><%= notice %></p> -->
 
-<div class="mdl-grid">
-  	<div class="mdl-cell mdl-cell--5-col mdl-cell--10-col-tablet">
+<div class="row">
+  	<div class="col s12 m6 l6">
   	
-		<div class="demo-card-wide mdl-card mdl-shadow--2dp center question">
-			<%= render "layouts/form/title", title: @question.title %>
+		<%= render "layouts/card/top", card: {class: ""} %>
+			<div class="card-content">
+				<%= render "layouts/form/title", title: @question.title %>
 	
-			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-				<%= @question.description %>
-				<div>
-					
+				<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+					<%= @question.description %>
+					<div>
+						<!-- Info Client -->
+					</div>
 				</div>
-			</div>
 	
-			<% if @question.client.id == @user.client.id %>
-				<div class="mdl-card__actions mdl-card--border">
-  					<div class="actions">
+				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
+					 <div class="card-action">
   						<%= link_to 'Editar', edit_question_path(@question) %>
   						<%= link_to 'Responder', 'javascript:respond()' %>
   						<%= link_to 'Back', "/dashboard" %>
   					</div>
-  				</div>
-  			<% end %>
-		</div>
+  				<% end %>
+  			
+  			</div>
+		<%= render "layouts/card/bottom" %>
 		
 		<div id="respond"></div>
 				
 	</div>
 	
-	<div class="mdl-cell mdl-cell--7-col mdl-cell--10-col-tablet">
+	<div class="col s12 m6 l6">
 		<div id="answers"></div>
 	</div>
 	
@@ -38,10 +39,10 @@
 
 <script>
 	function respond(){		
-		$("#respond").load("<%= new_question_answer_path (@question) %>");
+		$("#respond").load("<%= new_question_answer_path (@question) %>?ajax=true");
 	}
 	
 	$(document).ready(function() {
-		$("#answers").load("<%= question_answers_path (@question) %>");
+		$("#answers").load("<%= question_answers_path (@question) %>?ajax=true");
 	});
 </script>
