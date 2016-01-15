@@ -1,11 +1,19 @@
 <!-- <div class="row"> -->
 	<div class="input-field <%= input[:field].nil? ? "" : input[:field][:class] %>">
 		<% if defined? f %>
-			<%= f.label input[:id] %>
-    		<%= f.text_field input[:id], class: "validate" %>
+			<%= f.label input[:id]  %>
+			<% if input[:type] == "textarea" %>
+				<%= f.text_area input[:id], class: "materialize-textarea validate" %>
+			<% else %>
+    			<%= f.text_field input[:id], class: "validate", pattern: (input[:pattern]!=nil) ? input[:pattern][:value] : nil %>
+    		<% end %>
 		<% else %>
 			<label for="<%= input[:id] %>"><%= input[:label] %></label><!--class="active"-->
-    		<input id="<%= input[:id] %>" name="<%= input[:id] %>" type="<%= input[:type].nil? ? "text" : input[:type] %>" class="validate">
+    		<% if input[:type] == "textarea" %>
+    			<textarea id="<%= input[:id] %>" name="<%= input[:id] %>" class="validate" class="materialize-textarea"/>
+      		<% else %>
+      			<input id="<%= input[:id] %>" name="<%= input[:id] %>" type="<%= input[:type].nil? ? "text" : input[:type] %>" class="validate"/>
+      		<% end %>
       	<% end %>
     </div>
 <!--</div>-->

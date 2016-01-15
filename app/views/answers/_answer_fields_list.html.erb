@@ -1,9 +1,12 @@
-<ul class="collection collapsible">
+<ul class="collection collapsible" data-collapsible="expandable">
 	<% answers.each do |answer| %>
 		<li>
       		<div class="collapsible-header">
       			<i class="material-icons">add_circle_outline</i>
       			<%= answer.title %>
+      			<% if (@user != nil and @user.client.id == answer.client.id) %>
+      				<%= link_to "Editar", edit_question_answer_path(@question, answer), class: "secondary-content" %>
+      			<% end %>
       		</div>
       		<div class="collapsible-body">
       			<p class="truncate"><%= answer.description %></p>

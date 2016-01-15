@@ -1,13 +1,16 @@
 <%= render 'layouts/header' %>
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp center client">
-	<%= render "layouts/form/title", title: "Nuevo Cliente" %>
+<div class="container">
+	<%= render "layouts/card/top", card: {class: ""} %>
+		<div class="card-content">
+			<%= render "layouts/form/title", title: "Nuevo Cliente" %>
   	
-  	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-		<%= render 'form', url: "/login" %>
-	</div>
-	
-	<!-- <%= link_to 'Back', clients_path, class: "link" %> -->
+  			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<%= render 'form', url: "/login" %>
+			</div>
+			<!-- <%= link_to 'Back', clients_path, class: "link" %> -->
+		</div>
+	<%= render "layouts/card/bottom" %>
 </div>
 
 <%= render 'layouts/footer' %>

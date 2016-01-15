@@ -2,31 +2,41 @@
 
 <!-- <p id="notice"><%= notice %></p> -->
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp center profile">
-	<%= render "layouts/form/title", title: "Perfil" %>
-
-	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-		<%= render "layouts/form/subtitle", subtitle: "Informacion Basica" %>
-		<div class="mdl-grid">
-  			<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-  				<%= render "layouts/form/showField", field: {name: "Nombre", value:@client.fullName} %>
-				<%= render "layouts/form/showField", field: {name: "Sexo", value:@client.sex} %>
-				<%= render "layouts/form/showField", field: {name: "Edad", value:@client.age} %>
-			</div>
-		</div>
+<div class="container">
+	<%= render "layouts/card/top", card: {class: "col s12 m8 l8 offset-m2 offset-l2"} %>
+		<div class="card-content">
+			
+			<%= render "layouts/form/title", title: "Perfil" %>
+			
+			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<br/>
+				<div class="mdl-grid">
+  					<div class="col s6">
+  						<%= render "layouts/form/subtitle", subtitle: "Informacion Basica" %>
+  						<%= render "layouts/form/showField", field: {name: "Nombre", value:@client.fullName} %>
+						<%= render "layouts/form/showField", field: {name: "Sexo", value:@client.sex} %>
+						<%= render "layouts/form/showField", field: {name: "Edad", value:@client.age} %>
+					</div>
+				</div>
 		
-		<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
-		<div class="mdl-grid">
-  			<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-				<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
-			</div>
-		</div>
 				
-		<div class="mdl-card__actions mdl-card--border">
-  			<div class="actions">
-  				<%= link_to 'Editar', edit_client_path(@client) %>
+				<div class="row">
+  					<div class="col s6">
+  						<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
+						<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
+					</div>
+				</div>
+				
+				<div class="mdl-card__actions mdl-card--border">
+  					<div class="actions">
+  						<%= link_to 'Editar', edit_client_path(@client) %>
+					</div>
+				</div>
+				
 			</div>
+			
 		</div>
-	</div>
+	<%= render "layouts/card/bottom" %>
 </div>
 
+<%= render 'layouts/footer' %>

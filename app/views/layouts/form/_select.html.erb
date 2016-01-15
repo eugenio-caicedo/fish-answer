@@ -1,0 +1,10 @@
+<div class="input-field select-field <%= input[:field].nil? ? "" : input[:field][:class] %>">
+	<%= f.label input[:id]  %><br/><br/>
+	<%= f.select input[:id], options %>
+</div>
+
+<script>
+	$(document).ready(function() {
+    	$('select').material_select();
+	});
+</script>

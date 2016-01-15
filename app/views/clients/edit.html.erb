@@ -1,12 +1,17 @@
 <%= render 'layouts/header' %>
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp center client">
-	<%= render "layouts/form/title", title: "Editar Perfil" %>
+<div class="container">
+	<%= render "layouts/card/top", card: {class: ""} %>
+		<div class="card-content">
+		
+			<%= render "layouts/form/title", title: "Editar Perfil" %>
 	
-	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-		<%= render 'form' %>
-	</div>
-	
+			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<%= render 'form' %>
+			</div>
+			
+		</div>
+	<%= render "layouts/card/bottom" %>
 </div>
 
 <!--

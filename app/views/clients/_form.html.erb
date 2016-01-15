@@ -15,18 +15,22 @@
   	<%= f.hidden_field "url", value: url %>
   <% end %>
 
-  <div class="mdl-grid">
-  	<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-  		<%= f.label "Informacion Basica" %>
-  		<%= render "client_fields", :f => f %>
+  <div class="row">
+  	<div class="col s12 m6 l6">
+  		<div class="section">
+  			<%= render "layouts/form/subtitle", subtitle: "Informacion Basica" %>
+  			<%= render "client_fields", :f => f %>
+  		</div>
   	</div>
   	
-  	<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+  	<div class="col s12 m6 l6">
   		<!-- USER'S ACCES -->
-  		<%= f.label "Datos de Acceso" %>
-  		<%= f.fields_for :users do |user| %> 
-  			<%= render "users/user_fields", :f => user %>
-  		<% end %>
+  		<div class="section">
+  			<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
+  			<%= f.fields_for :users do |user| %> 
+  				<%= render "users/user_fields", :f => user %>
+  			<% end %>
+  		</div>
   	</div>
   </div>
   

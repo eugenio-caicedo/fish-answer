@@ -1,8 +1,9 @@
-<div class="demo-card-wide mdl-card mdl-shadow--2dp center answer">
-	<%= render "layouts/form/title", title: "Nueva Respuesta" %>
-	<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-		<%= render 'form' %>
+<%= render "layouts/card/top", card: {class: ""} %>
+	<div class="card-content">
+		<%= render "layouts/form/title", title: "Nueva Respuesta" %>
+		<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+			<%= render 'form' %>
+		</div>
 	</div>
-</div>
-
+<%= render "layouts/card/bottom" %>
 

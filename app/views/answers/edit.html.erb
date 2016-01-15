@@ -1,12 +1,14 @@
 <%= render 'layouts/header' %>
 
 <div class ="container">
-	<div class="demo-card-wide mdl-card mdl-shadow--2dp center answer">
-		<%= render "layouts/form/title", title: "Editar Respuesta" %>
-		<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-			<%= render 'form' %>
+	<%= render "layouts/card/top", card: {class: "col l10 offset-l1"} %>
+		<div class="card-content">
+			<%= render "layouts/form/title", title: "Editar Respuesta" %>
+			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<%= render 'form' %>
+			</div>
 		</div>
-	</div>
+	<%= render "layouts/card/bottom" %>
 
 	<%= link_to 'Back', question_path(@question) %>
 </div>
