@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 
-<div class ="container">
+<div class="container">
 	<%= render "layouts/card/top", card: {class: "col l10 offset-l1"} %>
 		<div class="card-content">
 			<%= render "layouts/form/title", title: "Editar Pregunta" %>
@@ -9,7 +9,7 @@
 			</div>
 		</div>
 	<%= render "layouts/card/bottom" %>
-	<%= link_to 'Back', "/dashboard" %>
+	<%= link_to 'Back', question_path(@question) %>
 </div>
 
 <%= render 'layouts/footer' %> 

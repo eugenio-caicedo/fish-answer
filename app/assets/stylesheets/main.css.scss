@@ -1,50 +1,39 @@
+/*
+ * This is a manifest file that'll be compiled into main.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require_tree ./basic
+ */
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-@import "materialize";
 
-/**DASHBOARD*/
-main {
-	width: 100%;
-}
-.spacer {
-	-webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-}
-.form {
-	text-align: center;
-}
-.link {
-	margin: 10px;
-	padding: 10px;
-	display: block;
-}
-a.link_to {
-	color: white; //falta hover...
-}
-.demo-card-wide.mdl-card.login {
-	width: 25%;
-	
-	.space-center {
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-}
-.select-field {
-	margin-top: 0px;
-}
+//@import "./scaffolds";
+
+//GLOBAL CSS for FORM
+
+	/*Class*/
 .sub-title {
 	font-weight: bold;
 }
+
 .title-field {
 	font-style: italic;
 }
-p.title-field {
-	text-align: left;
-	font-style: initial;
+	p.title-field {
+		text-align: left;
+		font-style: initial;
+	}
+
+.select-field {
+	margin-top: 0px;
 }
-/**DASHBOARD*/

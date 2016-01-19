@@ -10,4 +10,8 @@
 	<button type="reset" class="btn blue-grey waves-effect lighten-5 blue-text text-darken-2">
 		Cancelar
 	</button>
+	<% if (defined? actions and actions[:back]!=nil) %>
+		<%= link_to "Regresar", request.referer %>
+	<% end %>
+	
 </div>

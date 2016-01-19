@@ -17,7 +17,7 @@
 				</div>
 	
 				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
-					 <div class="card-action left-align">
+					 <div class="actions card-action left-align">
   						<%= link_to 'Editar', edit_question_path(@question) %>
   						<%= link_to 'Responder', 'javascript:respond()' %>
   						<%= link_to 'Back', "/dashboard" %>

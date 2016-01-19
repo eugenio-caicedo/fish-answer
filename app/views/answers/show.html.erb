@@ -1,14 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/header' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @answer.title %>
-</p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<p>
-  <strong>Description:</strong>
-  <%= @answer.description %>
-</p>
+<div class="container">
+	<%= render "layouts/card/top", card: {class: "col s12 m8 l8 offset-m2 offset-l2"} %>
+		<div class="card-content">
+			<%= render "layouts/form/title", title: @answer.title %>
+			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+				<br/>
+				<%= @answer.description %>
+			</div>
+			<div class="actions card-action left-align">
+  				<%= link_to 'Edit', edit_question_answer_path(@question, @answer) %>
+				<%= link_to 'Back', question_path(@question) %>
+  			</div>
+		</div>
+	<%= render "layouts/card/bottom" %>
+</div>
 
-<%= link_to 'Edit', edit_question_answer_path(@question, @answer) %> |
-<%= link_to 'Back', question_answers_path(@question) %>
+<%= render 'layouts/footer' %>
