@@ -1,8 +1,8 @@
 <!-- USERNAME -->
-<%= render "layouts/form/texfield", f: f, input: {id: :username} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :username, label: "Usuario"} %>
 
 <!-- PASSWORD -->
-<%= render "layouts/form/texfield", f: f, input: {id: :password, type: "password"} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :password, type: "password", label: "Clave"} %>
 
 <!-- PASSWORD CONFIRMATION -->
-<%= render "layouts/form/texfield", f: f, input: {id: :password_confirmation, type: "password"} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :password_confirmation, type: "password", label: "Confirmacion de la Clave"} %>

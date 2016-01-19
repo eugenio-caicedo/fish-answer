@@ -1,5 +1,9 @@
 <div class="input-field select-field <%= input[:field].nil? ? "" : input[:field][:class] %>">
-	<%= f.label input[:id]  %><br/><br/>
+	<% if input[:label] != nil %>
+		<%= f.label input[:id], input[:label]  %><br/><br/>
+	<% else %>
+		<%= f.label input[:id]  %><br/><br/>
+	<% end %>
 	<%= f.select input[:id], options %>
 </div>
 

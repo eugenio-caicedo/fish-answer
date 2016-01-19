@@ -1,11 +1,11 @@
 <!-- FIRST NAME -->
-<%= render "layouts/form/texfield", f: f, input: {id: :first_name} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :first_name, label: "Primer Nombre"} %>
   
 <!-- LAST FIRST NAME -->
-<%= render "layouts/form/texfield", f: f, input: {id: :first_last_name} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :first_last_name, label: "Primer Apellido"} %>
 
 <!-- AGE -->
-<%= render "layouts/form/texfield", f: f, input: {id: :age, pattern: {value: "-?[0-9]*(\.[0-9]+)?"}} %>
+<%= render "layouts/form/texfield", f: f, input: {id: :age, label: "Edad", pattern: {value: "-?[0-9]*(\.[0-9]+)?"}} %>
   
 <!-- SEX -->
-<%= render "layouts/form/select", f: f, input: {id: :sex}, options: Client.sexValue %>
+<%= render "layouts/form/select", f: f, input: {id: :sex, label: "Genero"}, options: Client.sexValue %>

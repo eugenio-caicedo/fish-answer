@@ -1,9 +1,15 @@
 <!-- <div class="row"> -->
 	<div class="input-field <%= input[:field].nil? ? "" : input[:field][:class] %>">
 		<% if defined? f %>
-			<%= f.label input[:id]  %>
+			<% if input[:label] != nil %>
+				<%= f.label input[:id], input[:label]  %>
+			<% else %>
+				<%= f.label input[:id]  %>
+			<% end %>
 			<% if input[:type] == "textarea" %>
 				<%= f.text_area input[:id], class: "materialize-textarea validate" %>
+			<% elsif input[:type] == "password" %>
+				<%= f.password_field input[:id], class: "validate" %>
 			<% else %>
     			<%= f.text_field input[:id], class: "validate", pattern: (input[:pattern]!=nil) ? input[:pattern][:value] : nil %>
     		<% end %>

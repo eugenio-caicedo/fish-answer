@@ -10,12 +10,15 @@
 				<br/>
 				<%= @answer.description %>
 			</div>
-			<div class="actions card-action left-align">
-  				<%= link_to 'Edit', edit_question_answer_path(@question, @answer) %>
-				<%= link_to 'Back', question_path(@question) %>
-  			</div>
+			<% if (!@user.nil? and @answer.client.id == @user.client.id) %>
+				<div class="actions card-action left-align">
+  					<%= link_to 'Edit', edit_question_answer_path(@question, @answer) %>
+					<%= link_to 'Back', question_path(@question) %>
+  				</div>
+  			<% end %>
 		</div>
 	<%= render "layouts/card/bottom" %>
+	<%= link_to 'Back', question_path(@question) %>
 </div>
 
 <%= render 'layouts/footer' %>

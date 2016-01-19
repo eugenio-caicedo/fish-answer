@@ -11,9 +11,9 @@
     </div>
   <% end %>
 	
-  <%= render "layouts/form/texfield", f: f, input: {id: :title} %>
+  <%= render "layouts/form/texfield", f: f, input: {id: :title, label: "Titulo"} %>
   
-  <%= render "layouts/form/texfield", f: f, input: {id: :description, type: "textarea"} %>
+  <%= render "layouts/form/texfield", f: f, input: {id: :description, type: "textarea", label: "Descripcion"} %>
   
   <!-- BUTTONS -->
   <div class="mdl-card__actions mdl-card--border">
