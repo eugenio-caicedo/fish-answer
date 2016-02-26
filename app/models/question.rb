@@ -1,6 +1,9 @@
 class Question < ActiveRecord::Base
 	belongs_to :client
 	has_many :answers, :dependent => :destroy
+	has_many :votes, :dependent => :destroy
+	has_and_belongs_to_many :tags, class_name: "Tag"
+	
 	accepts_nested_attributes_for :answers
 		
 	scope :recents, ->(page, limit){includes(:client).order("updated_at DESC").paginate(:page => page, :per_page => limit)}
