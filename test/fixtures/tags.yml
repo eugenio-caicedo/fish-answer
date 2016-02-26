@@ -2,10 +2,8 @@
 
 one:
   id: 1
-  title: MyString
-  description: MyString
-
+  description: "Historia"
+  
 two:
   id: 2
-  title: MyString
-  description: MyString
+  description: "Programación"
