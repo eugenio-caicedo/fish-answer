@@ -14,6 +14,16 @@
 					<div>
 						<!-- Info Client -->
 					</div>
+					<div class="tags">
+						<% @question.tags.each do |tag| %>
+							<div class="chip">
+								<% if !@user.nil? and @user.client == @question.client %>
+									<i class="material-icons">close</i>
+								<% end %>
+								<%= tag.description %>
+							</div>
+						<% end %>
+					</div>
 				</div>
 	
 				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
@@ -44,5 +54,9 @@
 	
 	$(document).ready(function() {
 		$("#answers").load("<%= question_answers_path (@question) %>?ajax=true");
+		$(".chip").on('click', function(e){
+			console.log(e);
+			//Permitira eliminar el chip correspondiente
+		});
 	});
 </script>
