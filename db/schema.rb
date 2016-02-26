@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111202737) do
+ActiveRecord::Schema.define(version: 20160226204927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20160111202737) do
     t.datetime "updated_at"
   end
 
+  create_table "followers", id: false, force: true do |t|
+    t.integer  "client_id"
+    t.integer  "client_follower_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -47,6 +54,20 @@ ActiveRecord::Schema.define(version: 20160111202737) do
 
   add_index "questions", ["client_id"], name: "index_questions_on_client_id", using: :btree
 
+  create_table "questions_tags", id: false, force: true do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+  end
+
+  add_index "questions_tags", ["question_id"], name: "index_questions_tags_on_question_id", using: :btree
+  add_index "questions_tags", ["tag_id"], name: "index_questions_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
@@ -56,5 +77,16 @@ ActiveRecord::Schema.define(version: 20160111202737) do
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id", using: :btree
+
+  create_table "votes", force: true do |t|
+    t.float    "rating"
+    t.integer  "client_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["client_id"], name: "index_votes_on_client_id", using: :btree
+  add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
 
 end
