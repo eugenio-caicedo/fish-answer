@@ -27,6 +27,10 @@ class Question < ActiveRecord::Base
 		self.tags.any?{|tag| tag.description.downcase == tag_param.downcase }
 	end
 	
+	def tag_list_split(&proc)
+		self.tag_list.split(",").each { |tag| proc.call(tag) } if !self.tag_list.nil?
+	end
+	
 private
 	def dateFormat(date)
 		date.strftime "%H:%M %d-%m-%Y"
