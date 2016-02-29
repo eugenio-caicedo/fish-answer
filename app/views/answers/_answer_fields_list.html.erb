@@ -10,7 +10,11 @@
       		</div>
       		<div class="collapsible-body">
       			<p class="truncate"><%= answer.description %></p>
-      			<p><%= link_to "Ver Respuesta", question_answer_path(@question, answer) %></p>
+      			<p><%= render "answers/info_client", answer: answer %></p>
+      			<hr style="width:90%"/>
+      			<p>
+      				<%= link_to "Ver Respuesta", question_answer_path(@question, answer) %>
+      			</p>
       		</div>
     	</li>
 	<% end %>
