@@ -13,8 +13,12 @@ class Question < ActiveRecord::Base
 		dateFormat created_at
 	end
 	
+	def updatedAtFormated
+		dateFormat updated_at
+	end
+	
 private
 	def dateFormat(date)
-		date.strftime "%H:%M %d-%m-%Y"
+		date.strftime "%d-%m-%Y a las %H:%M"
 	end
 end

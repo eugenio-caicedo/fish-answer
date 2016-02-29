@@ -11,9 +11,7 @@
 	
 				<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
 					<%= @question.description %>
-					<div>
-						<!-- Info Client -->
-					</div>
+					<%= render "questions/info_client", question: @question %>
 				</div>
 	
 				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
