@@ -7,6 +7,9 @@ class Question < ActiveRecord::Base
 	accepts_nested_attributes_for :answers
 	
 	attr_accessor :tag_list
+	
+	after_find :set_tag_list 
+	after_initialize :set_tag_list
 			
 	scope :recents, ->(page, limit){includes(:client).order("updated_at DESC").paginate(:page => page, :per_page => limit)}
 	scope :client_recents, ->(client, page, limit){by_client(client).recents(page, limit)}
@@ -18,8 +21,8 @@ class Question < ActiveRecord::Base
 		dateFormat created_at
 	end
 	
-	def save_or_update
-		registration = QuestionRegistration.new(self)
+	def save_or_update(params)
+		registration = QuestionRegistration.new(self, params)
 		registration.save_or_update
 	end
 	
@@ -28,12 +31,19 @@ class Question < ActiveRecord::Base
 	end
 	
 	def tag_list_split(&proc)
-		self.tag_list.split(",").each { |tag| proc.call(tag) } if !self.tag_list.nil?
+		self.tag_list.split(",").each { |tag| proc.call(tag) } #if !self.tag_list.nil?
 	end
 	
 private
 	def dateFormat(date)
 		date.strftime "%H:%M %d-%m-%Y"
+	end
+	
+	def set_tag_list
+		if self.tag_list.nil?
+			self.tag_list = ""
+			self.tags.each { |tag| self.tag_list += "#{tag.description}, " }
+		end
 	end
 	
 end

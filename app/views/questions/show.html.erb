@@ -18,7 +18,8 @@
 						<% @question.tags.each do |tag| %>
 							<div class="chip">
 								<% if !@user.nil? and @user.client == @question.client %>
-									<i class="material-icons">close</i>
+									<i id="<%= question_tag_path(@question, tag, format: :json) %>" 
+									class="material-icons">close</i>
 								<% end %>
 								<%= tag.description %>
 							</div>
@@ -54,9 +55,17 @@
 	
 	$(document).ready(function() {
 		$("#answers").load("<%= question_answers_path (@question) %>?ajax=true");
-		$(".chip").on('click', function(e){
-			console.log(e);
-			//Permitira eliminar el chip correspondiente
+		$(".chip > i").on('click', function(e){
+			console.log(e.target.id);
+			$.ajax({
+    			url: e.target.id,
+        		type: 'DELETE',
+        		error: function(result, textStatus, serverEstatus){
+        			console.log(result.responseText);
+            		console.log(textStatus);
+            		console.log(serverEstatus);
+        		}
+  			});
 		});
 	});
 </script>

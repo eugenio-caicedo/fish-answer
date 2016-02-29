@@ -56,9 +56,11 @@ Rails.application.routes.draw do
   #   end
   
   resources :users
+  resources :tags
   
   resources :questions do
   	resources :answers
+  	resources :tags
   end
     
   resources :clients do

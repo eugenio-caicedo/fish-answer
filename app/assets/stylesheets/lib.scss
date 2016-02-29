@@ -4,6 +4,10 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "materialize";
 
 	//GLOBAL CSS
+.chip {
+	margin-top: 2%;
+}
+
 .tags {
 	width: 100%;
 	text-align: left;
