@@ -8,7 +8,7 @@ class QuestionRegistration
 	
 	def save_or_update
 		@question.class.transaction do
-			@question.save(@params_question)
+			@question.update(@params_question)
 			validate_tag_list
 		end
 	end
