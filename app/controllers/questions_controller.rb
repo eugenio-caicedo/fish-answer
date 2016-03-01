@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+  	@question.update_visits_count
   end
 
   # GET /questions/new

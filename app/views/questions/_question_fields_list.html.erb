@@ -6,7 +6,10 @@
 	<% questions.each do |question| %>
 		<li class="collection-item avatar">
     		<span class="title"><%= question.title %></span>
-    		<span class="hide-on-small-only count">Respuestas: <span class="blue-text text-darken-4"><%= question.answers.count %></span></span>
+    		<span class="hide-on-small-only count">
+    			Respuestas: <span class="blue-text text-darken-4"><%= question.answers.count %></span><br/>
+    			Vista: <span class="blue-text text-darken-4"><%= question.visits_count %></span>
+    		</span>
     		<blockquote>
     			realizada por <%= link_to question.client.fullName, client_path(question.client) %> 
 				el dia <%= question.createdAtFormated %>

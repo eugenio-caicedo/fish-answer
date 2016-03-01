@@ -26,7 +26,12 @@ class Question < ActiveRecord::Base
 	end
 	
 	def save_or_update(params)
-		registration = QuestionRegistration.new(self, params)
+		registration = new_registration(params)
+		registration.save_or_update
+	end
+	
+	def update_visits_count
+		registration = new_registration({visits_count: self.visits_count+=1 })
 		registration.save_or_update
 	end
 	
@@ -41,6 +46,10 @@ class Question < ActiveRecord::Base
 private
 	def dateFormat(date)
 		date.strftime "%d-%m-%Y a las %H:%M"
+	end
+	
+	def new_registration(params)
+		QuestionRegistration.new(self, params)
 	end
 	
 	def set_tag_list
