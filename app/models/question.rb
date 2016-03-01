@@ -21,6 +21,10 @@ class Question < ActiveRecord::Base
 		dateFormat created_at
 	end
 	
+	def updatedAtFormated
+		dateFormat updated_at
+	end
+	
 	def save_or_update(params)
 		registration = QuestionRegistration.new(self, params)
 		registration.save_or_update
@@ -33,10 +37,10 @@ class Question < ActiveRecord::Base
 	def tag_list_split(&proc)
 		self.tag_list.split(",").each { |tag| proc.call(tag) } #if !self.tag_list.nil?
 	end
-	
+		
 private
 	def dateFormat(date)
-		date.strftime "%H:%M %d-%m-%Y"
+		date.strftime "%d-%m-%Y a las %H:%M"
 	end
 	
 	def set_tag_list

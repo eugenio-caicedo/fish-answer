@@ -1,0 +1,12 @@
+<hr />
+<div class="row">
+		<div class="col s6 info_client">
+			Ultima actualización: <%= question.updatedAtFormated %>
+		</div>
+		<div class="col s6">
+			<div class="card-panel teal lighten-5 info_client">
+				Pregunta realizada por <%= link_to question.client.fullName, client_path(question.client) %> 
+				el dia <%= question.createdAtFormated %>
+			</div>
+		</div>
+</div>

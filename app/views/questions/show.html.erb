@@ -8,12 +8,9 @@
 		<%= render "layouts/card/top", card: {class: ""} %>
 			<div class="card-content">
 				<%= render "layouts/form/title", title: @question.title %>
-	
-				<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-					<%= @question.description %>
-					<div>
-						<!-- Info Client -->
-					</div>
+				
+				<div class="content_supporting-text">
+					<div class="text"><%= @question.description %></div>
 					<div class="tags">
 						<% @question.tags.each do |tag| %>
 							<div class="chip">
@@ -25,13 +22,15 @@
 							</div>
 						<% end %>
 					</div>
+					<%= render "questions/info_client", question: @question %>
+					
 				</div>
 	
 				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
 					 <div class="actions card-action left-align">
   						<%= link_to 'Editar', edit_question_path(@question) %>
   						<%= link_to 'Responder', 'javascript:respond()' %>
-  						<%= link_to 'Back', "/dashboard" %>
+  						<%= link_to 'Regresar', "/dashboard" %>
   					</div>
   				<% end %>
   			

@@ -6,10 +6,11 @@
 	<% questions.each do |question| %>
 		<li class="collection-item avatar">
     		<span class="title"><%= question.title %></span>
-      			<p>realizada por <%= question.client.fullName %> en <%= question.createdAtFormated %><br>
-         			Respuestas: <%= question.answers.count %>
-      			</p>
-    		</span>
+    		<span class="hide-on-small-only count">Respuestas: <span class="blue-text text-darken-4"><%= question.answers.count %></span></span>
+    		<blockquote>
+    			realizada por <%= link_to question.client.fullName, client_path(question.client) %> 
+				el dia <%= question.createdAtFormated %>
+			</blockquotep>
     		<div class="secondary-content">
     			<!-- <a href="#!"><i class="material-icons">grade</i></a><br/> -->
     			<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Pregunta"

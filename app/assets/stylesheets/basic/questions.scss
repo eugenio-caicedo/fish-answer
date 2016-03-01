@@ -4,3 +4,16 @@
 .pagination {
 	margin: 0px;
 }
+
+.count {
+	
+	position: static;
+	float: right;
+	margin-right: 5%;
+	font-style: italic;
+	
+	span {
+		font-style: initial;
+		font-weight: bolder;
+	}
+}
