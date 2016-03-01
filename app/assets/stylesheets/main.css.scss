@@ -33,7 +33,20 @@
 		text-align: left;
 		font-style: initial;
 	}
+	
+.card .card-action {
+	padding: 10px;
+}
 
 .select-field {
 	margin-top: 0px;
+}
+
+.content_supporting-text {
+	margin-top: 3%;
+	
+	div {
+		margin-bottom: 2%;
+		text-align: justify;
+	}
 }

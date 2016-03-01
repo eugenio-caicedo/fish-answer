@@ -27,9 +27,11 @@
 					</div>
 				</div>
 				
-				<div class="actions card-action left-align">
-  					<%= link_to 'Editar', edit_client_path(@client) %>
-				</div>
+				<% if (@user != nil and @user.client.id == @client.id) %>
+					<div class="actions card-action left-align">
+  						<%= link_to 'Editar', edit_client_path(@client) %>
+					</div>
+				<% end %>
 				
 			</div>
 			

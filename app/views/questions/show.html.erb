@@ -9,8 +9,8 @@
 			<div class="card-content">
 				<%= render "layouts/form/title", title: @question.title %>
 	
-				<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
-					<%= @question.description %>
+				<div class="content_supporting-text">
+					<div><%= @question.description %></div>
 					<%= render "questions/info_client", question: @question %>
 				</div>
 	
@@ -18,7 +18,7 @@
 					 <div class="actions card-action left-align">
   						<%= link_to 'Editar', edit_question_path(@question) %>
   						<%= link_to 'Responder', 'javascript:respond()' %>
-  						<%= link_to 'Back', "/dashboard" %>
+  						<%= link_to 'Regresar', "/dashboard" %>
   					</div>
   				<% end %>
   			
