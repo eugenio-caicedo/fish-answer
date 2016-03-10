@@ -39,6 +39,22 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :test do
+  gem 'autotest-rails'
+  gem 'rspec-autotest'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers'
+  gem 'rspec_junit_formatter'
+  gem 'rspec-legacy_formatters'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
 # Custom GEM
 	#Material Design
 gem 'materialize-sass'
