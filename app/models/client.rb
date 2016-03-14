@@ -3,9 +3,7 @@ class Client < ActiveRecord::Base
 	has_many :questions, :dependent => :destroy
 	has_many :answers, :dependent => :destroy
 	has_many :votes, :dependent => :destroy
-	
-	#Followers
-	has_many :followers, foreign_key: :client_id, class_name: "Client"
+	has_many :followers, :dependent => :destroy
 	
 	accepts_nested_attributes_for :users, :questions, :answers
 	
