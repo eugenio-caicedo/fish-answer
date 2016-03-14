@@ -11,6 +11,7 @@ module Features
     	def sign_in
       		user = create(:user)
       		sign_in_with user.username, user.password
+      		return user
     	end
     	
     	def sign_out
