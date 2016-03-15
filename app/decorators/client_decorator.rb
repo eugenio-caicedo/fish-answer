@@ -19,9 +19,13 @@ class ClientDecorator
 		end
 		return false
 	end
+	
+	def current_user?
+		!@current_user.nil?
+	end
 
 private
 	def validate_not_nil?
-		(!@current_user.nil? and !@client.nil?)
+		(current_user? and !@client.nil?)
 	end
 end

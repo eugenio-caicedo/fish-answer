@@ -65,6 +65,7 @@ Rails.application.routes.draw do
     
   resources :clients do
   	resources :questions
+  	resources :followers
   end
     
   #get ':controller(/:action(/:id))(.:format)'

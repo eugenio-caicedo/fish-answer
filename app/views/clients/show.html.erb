@@ -5,9 +5,8 @@
 <div class="container">
 	<%= render "layouts/card/top", card: {class: "col s12 m8 l8 offset-m2 offset-l2"} %>
 		<div class="card-content">
-			
-			<%= render "layouts/form/title", title: "Perfil" %>
-			
+		
+			<%= render "layouts/form/title", title: @client_decorator.same_client? ? "Perfil" : "Usuario: #{@client.fullName}" %>
 			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
 				<br/>
 				<div class="mdl-grid">
@@ -27,12 +26,22 @@
 					</div>
 				</div>
 				
-				<% if (@user != nil and @user.client.id == @client.id) %>
-					<div class="actions card-action left-align">
+				<div class="actions card-action left-align">
+					<% if @client_decorator.same_client? %>
   						<%= link_to 'Editar', edit_client_path(@client) %>
-					</div>
-				<% end %>
-				
+  					<% else %>
+  						<% if !@client_decorator.client_follower? and @client_decorator.current_user? %>
+  							<%= link_to 'Seguir', client_followers_url(@client, format: :json), method: :post, remote: true,
+  								data: { params: { follower: {client_follower_id: @client.id} } } %>
+  						<% end %>
+  						
+  						<div id="status" class="<%= @client_decorator.client_follower? ? "" : "hide" %>">
+							<p class="cyan-text text-lighten-1"><i>Siguiendo</i></p>
+						</div>
+  						
+  					<% end %>
+  					
+				</div>			
 			</div>
 			
 		</div>
@@ -40,3 +49,12 @@
 </div>
 
 <%= render 'layouts/footer' %>
+
+<script>
+	$(document).ready(function() {
+		$("a[data-remote]").on('ajax:success', function(e, data, status, xhr){
+			$(e.target).addClass("hide");
+			$("#status").removeClass("hide");
+		});
+	});
+</script>
