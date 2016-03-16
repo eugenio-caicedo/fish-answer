@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  respond_to :html, :json
+  
   before_action :load_question
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
@@ -31,29 +33,20 @@ class AnswersController < ApplicationController
     @answer.client = @user.client
     @answer.question = @question
 	
-    respond_to do |format|
-      if @answer.save
-      	path = question_answer_path(@question, @answer)
-        format.html { redirect_to path, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: path }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
-    end
+	if @answer.save
+		respond_with @question
+	else
+		respond_using @answer, :new
+	end
   end
 
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        format.html { redirect_to question_answer_path, notice: 'Answer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @answer }
-      else
-        format.html { render :edit }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if @answer.update(answer_params)
+    	respond_with @question, @answer
+    else
+    	respond_using @answer, :edit
     end
   end
 
@@ -61,10 +54,7 @@ class AnswersController < ApplicationController
   # DELETE /answers/1.json
   def destroy
     @answer.destroy
-    respond_to do |format|
-      format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_to @question
   end
 
   private
@@ -82,7 +72,4 @@ class AnswersController < ApplicationController
       params.require(:answer).permit(:title, :description)
     end
     
-    def question_answer_path
-    	question_answer_path(@question, @answer)
-    end
 end

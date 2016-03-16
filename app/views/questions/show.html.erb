@@ -29,8 +29,11 @@
 				<% if (!@user.nil? and @question.client.id == @user.client.id) %>
 					 <div class="actions card-action left-align">
   						<%= link_to 'Editar', edit_question_path(@question) %>
-  						<%= link_to 'Responder', 'javascript:respond()' %>
   						<%= link_to 'Regresar', "/dashboard" %>
+  					</div>
+  				<% elsif(!@user.nil?) %>
+  					<div class="actions card-action left-align">
+  						<%= link_to 'Responder', 'javascript:respond()' %>
   					</div>
   				<% end %>
   			
