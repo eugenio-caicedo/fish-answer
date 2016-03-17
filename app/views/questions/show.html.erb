@@ -35,6 +35,10 @@
   					<div class="actions card-action left-align">
   						<%= link_to 'Responder', 'javascript:respond()' %>
   					</div>
+  				<% elsif(!@user.nil?) %>
+  					<div class="actions card-action left-align">
+  						<%= link_to 'Responder', 'javascript:respond()' %>
+  					</div>
   				<% end %>
   			
   			</div>

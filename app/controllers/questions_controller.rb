@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new
     @question.client = @user.client
-
+    
 	if @question.save_or_update(question_params)
 		respond_with @question
 	else
