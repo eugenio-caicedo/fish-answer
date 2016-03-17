@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+	ratyrate_rateable "vote"
+	
 	belongs_to :client
 	has_many :answers, :dependent => :destroy
 	has_many :votes, :dependent => :destroy

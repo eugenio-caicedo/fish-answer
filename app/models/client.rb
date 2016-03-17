@@ -1,4 +1,6 @@
 class Client < ActiveRecord::Base
+	ratyrate_rater
+	
 	has_many :users, :dependent => :destroy
 	has_many :questions, :dependent => :destroy
 	has_many :answers, :dependent => :destroy

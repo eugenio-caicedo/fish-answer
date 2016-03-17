@@ -3,18 +3,26 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_filter :currentUserInfo
+  before_filter :current_user
+  
+  helper_method :current_user
   
   PAGE_SIZE = 10
 
 protected
+  
+  def user_signed_in?
+  	!session[:user_id].nil? || !@user.nil?
+  end
 
-  def currentUserInfo
+  def current_user
   	@ajax = params[:ajax]
   	@user = nil
-  	if (session[:user_id] != nil)
+  	if user_signed_in?
   		@user = User.find_by_id(session[:user_id])
+  		return @user.client
   	end
+  	return @user
   end
   
   def respond_using model, resp_html

@@ -64,3 +64,5 @@ gem 'bootstrap-sass'
 gem 'pg'
 	#Paginacion
 gem 'will_paginate'
+	#Raiting Bar
+gem 'ratyrate', :github => 'wazery/ratyrate'

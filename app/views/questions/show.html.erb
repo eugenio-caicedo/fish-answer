@@ -10,7 +10,17 @@
 				<%= render "layouts/form/title", title: @question.title %>
 				
 				<div class="content_supporting-text">
-					<div class="text"><%= @question.description %></div>
+					<div class="col s3 m3 l3 raiting">
+						<% if @question.rates('vote').count > 0 %>
+							<%= rating_for @question, "vote", imdb_avg: true %>
+						<% end %>
+						<% if !@client_decorator.same_client? and @client_decorator.current_user? %>
+							<p>Mi Clasificaci&oacute;n:</p>
+							<%= rating_for @question, "vote" %>
+						<% end %>
+					</div>
+					
+					<div class="col s9 m9 l9 text"><%= @question.description %></div>
 					<div class="tags">
 						<% @question.tags.each do |tag| %>
 							<div class="chip">

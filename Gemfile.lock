@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/wazery/ratyrate.git
+  revision: 61487c4726c06748218fe082f85e5a253b69e225
+  specs:
+    ratyrate (1.2.2.alpha)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -216,6 +222,7 @@ DEPENDENCIES
   materialize-sass
   pg
   rails (= 4.1.8)
+  ratyrate!
   rspec-autotest
   rspec-legacy_formatters
   rspec-rails
