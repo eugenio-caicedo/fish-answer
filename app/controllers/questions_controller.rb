@@ -25,7 +25,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-  	@question.update_visits_count
+  	@client_decorator = ClientDecorator.new(@user, @question.client)
+  	@question.update_visits_count if !@client_decorator.same_client?
   end
 
   # GET /questions/new
