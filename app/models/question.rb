@@ -11,11 +11,13 @@ class Question < ActiveRecord::Base
 	
 	after_find :set_tag_list 
 	after_initialize :set_tag_list
-			
-	scope :recents, ->(page, limit){includes(:client).order("updated_at DESC").paginate(:page => page, :per_page => limit)}
-	scope :client_recents, ->(client, page, limit){by_client(client).recents(page, limit)}
+	
+	scope :paginable, ->(page, limit){ paginate(:page => page, :per_page => limit) }		
+	scope :recents, ->(page, limit){ includes(:client).order(updated_at: :desc).paginable(page, limit) }
+	scope :client_recents, ->(client, page, limit){ by_client(client).recents(page, limit) }
 	scope :by_client, ->(client){ includes(:client).where(client: client) }
 	scope :find_by_id, ->(id){ find_by id: id }
+	scope :last_questions_for_client, ->(client, page, limit){ includes(:answers).where(answers: {client: client}).paginable(page, limit).order('answers.updated_at, answers.created_at')  }
 	
 	#METODOS PROPIOS DE LA CLASE
 	def createdAtFormated
