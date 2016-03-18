@@ -22,3 +22,5 @@ exclude_paths:
 - "Gemfile.lock"
 - "test/**"
 - "db/**"
+- "app/assets/javascripts/jquery.raty.js"
+- "app/assets/javascripts/ratyrate.js.erb"
