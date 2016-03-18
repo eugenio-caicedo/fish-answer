@@ -50,3 +50,23 @@
 		text-align: justify;
 	}
 }
+
+.collapsible-body .raiting p {
+	padding: initial;
+}
+
+.raiting+p {
+	clear: both;
+}
+
+.raiting-me {
+	text-align: left;
+	
+	span {
+		font-weight: bolder;
+	}
+	
+	.star {
+		display: inline-block;
+	}
+}

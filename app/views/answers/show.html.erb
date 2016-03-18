@@ -9,6 +9,12 @@
 			<div class="content_supporting-text">
 				<div class="text"><%= @answer.description %></div>
 				<hr/>
+				<% if !@client_decorator.same_client? and @client_decorator.current_user? %>
+					<div class="raiting-me">
+						<span>Mi Clasificaci&oacute;n:</span>
+						<%= rating_for @answer, "vote" %>
+					</div>
+				<% end %>
 				<div class="left-align"><%= render "answers/info_client", answer: @answer %></div>
 			</div>
 			<% if (!@user.nil? and @answer.client.id == @user.client.id) %>

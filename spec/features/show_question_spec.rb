@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 feature 'When the question show' do
+
+  let!(:user){ create(:user) }
+  let!(:question){ create(:question, client: user.client) }
   
   context 'the visit count was incremented by one ' do
-  
-  	let!(:question){ create(:question) }
   	
   	scenario 'with the invited user' do
   		expect { visit question_path(question) }.to change { question.reload.visits_count }
@@ -21,9 +22,6 @@ feature 'When the question show' do
   end
   
   context 'the visit count was not incremented and should not be allowed to vote' do
-  
-  	let!(:user){ create(:user) }
-  	let!(:question){ create(:question, client: user.client) }
   	
   	scenario 'with the invited user' do
   		visit question_path(question)
@@ -34,6 +32,25 @@ feature 'When the question show' do
   		sign_in_with user.username, user.password
   		expect { visit question_path(question) }.to change { question.reload.visits_count }.by(0)
   		page.should_not have_content('.star')
+  	end
+  	
+  end
+  
+  context 'and have some answer, should see the raiting for each answer' do
+  
+  	let!(:answer){ create(:answer, question: question) }
+  	
+  	before { create(:rate, rateable: answer, rater: user.client) }
+  	
+  	scenario 'with the invited user', :js => true do
+  		visit question_path(question)		
+  		expect(page).to have_selector('.raiting div', count: 1,  visible: false)
+  	end
+  	
+  	scenario 'when sign in with the same user of question', :js => true do
+  		sign_in_with user.username, user.password
+  		visit question_path(question)		
+  		expect(page).to have_selector('.raiting div', count: 1,  visible: false)
   	end
   	
   end

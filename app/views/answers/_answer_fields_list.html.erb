@@ -1,6 +1,6 @@
 <ul class="collection collapsible" data-collapsible="expandable">
 	<% answers.each do |answer| %>
-		<li>
+		<li id="<%= answer.id %>">
       		<div class="collapsible-header">
       			<i class="material-icons">add_circle_outline</i>
       			<%= answer.title %>
@@ -9,7 +9,12 @@
       			<% end %>
       		</div>
       		<div class="collapsible-body">
-      			<p class="truncate"><%= answer.description %></p>
+      			<div class="col s9 m9 l9 text"><p class="truncate"><%= answer.description %></p></div>
+      			<div class="col s3 m3 l3 raiting">
+					<% if answer.rates('vote').count > 0 %>
+						<%= rating_for answer, "vote", imdb_avg: true %>
+					<% end %>
+				</div>
       			<p><%= render "answers/info_client", answer: answer %></p>
       			<hr style="width:90%"/>
       			<p>

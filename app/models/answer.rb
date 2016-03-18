@@ -1,4 +1,6 @@
 class Answer < ActiveRecord::Base
+	ratyrate_rateable "vote"
+	
 	belongs_to :client
 	belongs_to :question
 	
