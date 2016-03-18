@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317202258) do
+ActiveRecord::Schema.define(version: 20160318144315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,16 +120,5 @@ ActiveRecord::Schema.define(version: 20160317202258) do
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id", using: :btree
-
-  create_table "votes", force: true do |t|
-    t.float    "rating"
-    t.integer  "client_id"
-    t.integer  "question_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "votes", ["client_id"], name: "index_votes_on_client_id", using: :btree
-  add_index "votes", ["question_id"], name: "index_votes_on_question_id", using: :btree
 
 end

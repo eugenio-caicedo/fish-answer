@@ -4,7 +4,6 @@ class Client < ActiveRecord::Base
 	has_many :users, :dependent => :destroy
 	has_many :questions, :dependent => :destroy
 	has_many :answers, :dependent => :destroy
-	has_many :votes, :dependent => :destroy
 	has_many :followers, :dependent => :destroy
 	
 	accepts_nested_attributes_for :users, :questions, :answers
