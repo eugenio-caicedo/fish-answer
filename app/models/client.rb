@@ -1,6 +1,8 @@
 class Client < ActiveRecord::Base
 	ratyrate_rater
 	
+	enum sex: ["Masculino", "Femenino"]
+	
 	has_many :users, :dependent => :destroy
 	has_many :questions, :dependent => :destroy
 	has_many :answers, :dependent => :destroy
@@ -15,14 +17,9 @@ class Client < ActiveRecord::Base
 	
 	scope :find_by_id, ->(id){ find_by id: id }
 	
-	#METODOS ESTATICOS DE LA CLASE
-	def self.sexValue
-		["Masculino", "Femenino"]
-	end
-	
 	#METODOS PROPIOS DE LA CLASE
 	def fullName
-		self.first_name + " " +self.first_last_name
+		"#{first_name} #{first_last_name}"
 	end
 	
 	def currentUser
