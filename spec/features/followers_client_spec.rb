@@ -5,6 +5,6 @@ feature 'When the client' do
   	user = sign_in
   	client = create(:question).client
   	visit client_path client
-  	expect { click_on "Seguir" }.to change { user.client.reload.followers.count }
+  	expect { click_on "Seguir"; wait_for_ajax; }.to change { user.client.reload.followers.count }
   end
 end

@@ -24,12 +24,6 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
-  
-  # GET /users/logout
-  def logout
-  	reset_session
-  	redirect_to "/"
-  end
 
   # POST /users
   # POST /users.json

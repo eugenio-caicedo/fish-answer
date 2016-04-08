@@ -1,9 +1,8 @@
 class ClientsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
   
   respond_to :html, :json
-  
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
   # GET /clients.json
@@ -14,7 +13,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-  	@client_decorator = ClientDecorator.new(@user, @client)
+  	@client_decorator = ClientDecorator.new(current_user, @client)
   end
 
   # GET /clients/new

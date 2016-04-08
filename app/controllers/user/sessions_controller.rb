@@ -7,7 +7,6 @@ class User::SessionsController < Devise::SessionsController
 	respond_to :json, :html
 	
 	def new
-		#redirect_to "/login"
 		self.resource = resource_class.new(sign_in_params)
     	clean_up_passwords(resource)
     	yield resource if block_given?
@@ -15,8 +14,6 @@ class User::SessionsController < Devise::SessionsController
 	end
 	
 	def create
-		puts "CREATE NEW SESSION"
-		puts warden.inspect 
 		self.resource = warden.authenticate!(auth_options)
 		if self.resource
 			if sign_in(resource_name, resource)

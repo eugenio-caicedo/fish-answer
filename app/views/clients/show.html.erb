@@ -21,11 +21,14 @@
 				
 				<div class="row">
   					<div class="col s6">
-  						<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
-						<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
-						<%= render "layouts/form/showField", field: {name: "Correo", value:@client.currentUser.email} %>
+  						<% if @client_decorator.same_client? %>
+  							<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
+							<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
+							<%= render "layouts/form/showField", field: {name: "Correo", value:@client.currentUser.email} %>
+						<% end %>
 					</div>
 				</div>
+				
 				
 				<div class="actions card-action left-align">
 					<% if @client_decorator.same_client? %>

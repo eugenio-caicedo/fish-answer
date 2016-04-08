@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+  
   respond_to :html, :json
   
   before_action :set_question, only: [:show, :edit, :update, :destroy]
@@ -25,7 +27,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-  	@client_decorator = ClientDecorator.new(@user, @question.client)
+  	@client_decorator = ClientDecorator.new(current_user, @question.client)
   	@question.update_visits_count if !@client_decorator.same_client?
   end
 
@@ -42,7 +44,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new
-    @question.client = @user.client
+    @question.client = current_user.client
     
 	if @question.save_or_update(question_params)
 		respond_with @question

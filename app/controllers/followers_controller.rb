@@ -6,13 +6,13 @@ class FollowersController < ApplicationController
   # POST /followers.json	
   def create
   	@follower = Follower.new
-  	@follower.client = @user.client
+  	@follower.client = current_user.client
   	
   	
   	respond_to do |format|
       if @follower.update(follower_params)
-        format.html { redirect_to @follower, notice: 'Follower was successfully created.' }
-        format.json { render :show, status: :created, location: client_follower_path(@follower.client, @follower) }
+        format.html { redirect_to client_path(current_user), notice: 'Follower was successfully created.' }
+        format.json { render :show, status: :created, location: client_path(current_user) }
       else
         format.html { render :new }
         format.json { render json: @follower.errors, status: :unprocessable_entity }
