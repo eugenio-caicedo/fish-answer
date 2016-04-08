@@ -23,6 +23,6 @@ class Client < ActiveRecord::Base
 	end
 	
 	def currentUser
-		self.users[0]
+		self.users.first
 	end
 end

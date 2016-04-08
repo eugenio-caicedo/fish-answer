@@ -23,6 +23,7 @@
   					<div class="col s6">
   						<%= render "layouts/form/subtitle", subtitle: "Datos de Acceso" %>
 						<%= render "layouts/form/showField", field: {name: "Usuario", value:@client.currentUser.username} %>
+						<%= render "layouts/form/showField", field: {name: "Correo", value:@client.currentUser.email} %>
 					</div>
 				</div>
 				

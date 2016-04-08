@@ -15,12 +15,12 @@
 				<div class="space-center">
 				
 					<!-- USERNAME -->
-					<%= render "layouts/form/texfield", input: {id: "login", label: "Usuario:"} %>
+					<%= render "layouts/form/texfield", input: {id: "user[username]", label: "Usuario:"} %>
 						
 					<br/>
   					
   					<!-- PASSWORD -->
-					<%= render "layouts/form/texfield", input: {id: "password", label: "Clave:", type: "password" } %>
+					<%= render "layouts/form/texfield", input: {id: "user[password]", label: "Clave:", type: "password" } %>
 											
   				</div>
   			</div>
@@ -31,6 +31,6 @@
 	<%= render "layouts/card/bottom" %>
 
 	<div class="row">
-		<%= link_to "¿No posee Cuenta?", new_client_path, class: "link" %>
+		<%= link_to "¿No posee Cuenta?", "/users/register/client", class: "link" %>
 	</div>
 </div>

@@ -13,8 +13,8 @@
 <script>
 	$(document).ready(function() {
 		$("#list-question-recent").load("/questions?ajax=true");
-		//$("#list-question-recent-client").load("/clients/<%= @user.client.id %>/questions");
-		$("#list-question-recent-client").load("<%= client_questions_path (@user.client) %>?ajax=true");
+		//$("#list-question-recent-client").load("/clients/<%= current_user.client.id %>/questions");
+		$("#list-question-recent-client").load("<%= client_questions_path (current_user.client) %>?ajax=true");
 	});
 </script>
 

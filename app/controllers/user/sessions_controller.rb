@@ -15,17 +15,20 @@ class User::SessionsController < Devise::SessionsController
 	end
 	
 	def create
-		resource = warden.authenticate!(scope: resource_name, recall: "#{controller_path}#new")
-    	set_flash_message(:notice, :signed_in) if is_navigational_format?
-    	sign_in(resource_name, resource)
-
-    	respond_to do |format|
-      		format.html do
-        		respond_with resource, location: redirect_location(resource_name, resource)
-      		end
-      		format.json do
-        		render json: { response: 'ok', auth_token: current_user.authentication_token }.to_json, status: :ok
-      		end
+		puts "CREATE NEW SESSION"
+		puts warden.inspect 
+		self.resource = warden.authenticate!(auth_options)
+		if self.resource
+			if sign_in(resource_name, resource)
+      			respond_to do |format|
+        			format.json { render :status => 200, :json => { :success => true, :info => "Logged in", :user => UserSerializer.new(resource).serializable_hash}, :callback => params[:callback] }
+        			format.html { respond_with resource, location: after_sign_in_path_for(resource) }
+      			end
+    		else
+      			render :status => 200, :json => { :success => false, :info => "Login failed", :user => nil }
+    		end
+		else
+      		render :status => 200, :json => { :success => false, :info => "Unknow user", :user => nil }
     	end
   	end
   	

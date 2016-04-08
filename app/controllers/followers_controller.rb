@@ -1,4 +1,5 @@
 class FollowersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_follower, only: [:show, :edit, :update, :destroy]
 
   # POST /followers

@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  before_filter :authenticate_user!
+  
   respond_to :html, :json
   
   before_action :set_client, only: [:show, :edit, :update, :destroy]

@@ -5,6 +5,5 @@ class MainController < ApplicationController
 	end
 	
 	def dashboard
-		redirect_to current_user.sign_in_path
 	end
 end

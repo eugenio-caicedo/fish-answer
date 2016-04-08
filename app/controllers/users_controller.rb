@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+
   respond_to :html, :json
   
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -38,23 +40,6 @@ class UsersController < ApplicationController
 	else
 		respond_using @user, :new
 	end
-  end
-  
-  # POST /login/start
-  # POST /login/start.json
-  def login
-  	@user = User.new(user_params)
-  	
-  	respond_to do |format|
-  		if @user.verification
-  			session[:user_id] = @user.firstUser.id
-  			format.html { redirect_to "/dashboard" }
-  			format.json { render json: {url: "/dashboard"} }
-  		else
-      		format.html { redirect_to "/login", notice: 'El usuario no se encuentra.' }
-      		format.json { render json: {error: "El usuario no se encuentra.", estatus: 400}, :status => :bad_request }
-		end
-  	end
   end
 
   # PATCH/PUT /users/1

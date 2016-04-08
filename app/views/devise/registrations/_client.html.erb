@@ -1,0 +1,20 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+	<%= render "layouts/card/top", card: {class: ""} %>
+		<div class="card-content">
+			<%= render "layouts/form/title", title: "Nuevo Cliente" %>
+  	
+  			<div class="mdl-card__supporting-text mdl-card__actions mdl-card--border">
+  				<% @client = resource.build_client %>
+  				<% @client.users.push resource %>
+  				<%= form_for(resource, as:resource_name, url: registration_path(resource_name)) do |f| %>
+					<%= render "clients/form" %>
+				<% end %>				
+			</div>
+			<!-- <%= link_to 'Back', clients_path, class: "link" %> -->
+		</div>
+	<%= render "layouts/card/bottom" %>
+</div>
+
+<%= render 'layouts/footer' %>
