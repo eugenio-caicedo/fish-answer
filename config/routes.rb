@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'main#index'
+  root 'main#dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -56,6 +56,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  devise_for :users,
+  	controllers: { sessions: 'user/sessions', registrations: 'user/registrations' },
+    path_names: { sign_in: "login/main", sign_out: "logout", sign_up: "register/:type" }
+    
   resources :users
   resources :tags
   

@@ -66,3 +66,5 @@ gem 'pg'
 gem 'will_paginate'
 	#Raiting Bar
 gem 'ratyrate', :github => 'wazery/ratyrate'
+	#Devie
+gem 'devise'

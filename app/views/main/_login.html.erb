@@ -1,8 +1,7 @@
 <div class="container center-align">
 	<%= render "layouts/card/top", card: {class: "col s12 m6 offset-m3 l8 offset-l2"} %>
+	
 		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-		<% end %>
-		<form action="/login/start" method="post">
         	<div class="card-content">
             	<%= render "layouts/form/title", title: "Inicio de Session" %>
             	
@@ -16,19 +15,19 @@
 				<div class="space-center">
 				
 					<!-- USERNAME -->
-					<%= render "layouts/form/texfield", input: {id: "user[username]", label: "Usuario:"} %>
+					<%= render "layouts/form/texfield", input: {id: "login", label: "Usuario:"} %>
 						
 					<br/>
   					
   					<!-- PASSWORD -->
-					<%= render "layouts/form/texfield", input: {id: "user[password]", label: "Clave:", type: "password" } %>
+					<%= render "layouts/form/texfield", input: {id: "password", label: "Clave:", type: "password" } %>
 											
   				</div>
   			</div>
   				
   			<!-- BUTTONS -->
   			<%= render "layouts/buttons", actions: {submit:"Login"} %>			
-  		</form>
+  		<% end %>
 	<%= render "layouts/card/bottom" %>
 
 	<div class="row">

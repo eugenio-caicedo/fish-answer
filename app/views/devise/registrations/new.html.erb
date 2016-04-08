@@ -1,7 +1,5 @@
 <div class="container center-align">
 	<%= render "layouts/card/top", card: {class: "col s12 m6 offset-m3 l8 offset-l2"} %>
-		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-		<% end %>
 		<form action="/login/start" method="post">
         	<div class="card-content">
             	<%= render "layouts/form/title", title: "Inicio de Session" %>

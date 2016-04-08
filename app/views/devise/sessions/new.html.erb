@@ -1,0 +1,32 @@
+<%= render 'layouts/header' %> 
+
+<main>
+	<div class="container">
+		<div class="row">
+    		<div class="col s12">
+      			<ul class="tabs">
+        			<li class="tab col s6"><a class="active" href="#all-question">Preguntas Recientes</a></li>
+        			<li class="tab col s6"><a href="#login">Iniciar Session</a></li>
+        		</ul>
+    		</div>
+    		
+    		<div id="all-question" class="col s12">
+  				<div id="list-question">
+  				</div>
+  			</div>
+  	
+  			<div id="login" class="col s12">
+  				<%= render "/main/login", resource: resource, resource_name: resource_name %>
+  			</div>
+        </div>
+	</div>
+</main>
+
+<script>
+	$(document).ready(function() {
+		$('ul.tabs').tabs();
+		$("#list-question").load("<%= questions_path %>?ajax=true");
+	});
+</script>
+
+<%= render 'layouts/footer' %> 
